@@ -9,15 +9,15 @@ async function listContacts() {
   return JSON.parse(data);
 }
 
-async function getContactById(contactId) {
+async function getContactById(id) {
   const contacts = await listContacts();
-  const result = contacts.find((contact) => contact.id === contactId);
+  const result = contacts.find((contact) => contact.id === id);
   return result || null;
 }
 
-async function removeContact(contactId) {
+async function removeContact(id) {
   const contacts = await listContacts();
-  const index = contacts.findIndex((contact) => contact.id === contactId);
+  const index = contacts.findIndex((contact) => contact.id === id);
 
   if (index === -1) {
     return null;
@@ -40,14 +40,14 @@ async function addContact({ name, email, phone }) {
   return newContact;
 }
 
-async function updateById(contactId, data) {
+async function updateById(id, data) {
   const contacts = await listContacts();
-  const index = contacts.findIndex((contact) => contact.id === contactId);
+  const index = contacts.findIndex((contact) => contact.id === id);
 
   if (index === -1) {
     return null;
   }
-  contacts[index] = { id: contactId, ...data };
+  contacts[index] = { id, ...data };
   await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   return contacts[index];
 }
