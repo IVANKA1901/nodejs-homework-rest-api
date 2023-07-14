@@ -11,4 +11,10 @@ router.post(
   ctrl.registerUser
 );
 
+router.post(
+  "/login",
+  validateBody(schemas.userAuthSchema, "missing fields"),
+  ctrl.loginUser
+);
+
 module.exports = router;
