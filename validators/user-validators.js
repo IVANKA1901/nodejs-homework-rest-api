@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const emailRegexp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const emailRegexp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 const subscriptionTypes = ["starter", "pro", "business"];
 
 const userAuthSchema = Joi.object({
