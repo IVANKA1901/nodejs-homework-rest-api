@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const ctrl = require("../../controllers/user-controller");
+
 const { validateBody, authenticate } = require("../../middlewares");
 const { schemas } = require("../../validators/user-validators");
 
