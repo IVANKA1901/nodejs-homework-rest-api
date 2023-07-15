@@ -13,8 +13,15 @@ const userAuthSchema = Joi.object({
   subscription: Joi.string().valid(...subscriptionTypes),
 });
 
+const subscriptionSchema = Joi.object({
+  subscription: Joi.string()
+    .valid(...subscriptionTypes)
+    .required(),
+});
+
 const schemas = {
   userAuthSchema,
+  subscriptionSchema,
 };
 
 module.exports = {

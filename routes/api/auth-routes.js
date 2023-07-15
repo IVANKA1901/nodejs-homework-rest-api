@@ -21,4 +21,11 @@ router.post("/logout", authenticate, ctrl.logoutUser);
 
 router.get("/current", authenticate, ctrl.getCurrentUser);
 
+router.patch(
+  "/",
+  authenticate,
+  validateBody(schemas.subscriptionSchema, "missing fields"),
+  ctrl.updateSubscription
+);
+
 module.exports = router;
