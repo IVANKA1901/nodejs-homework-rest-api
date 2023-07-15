@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const ctrl = require("../../controllers/user-controller");
-const { validateBody } = require("../../middlewares");
+const { validateBody, authenticate } = require("../../middlewares");
 const { schemas } = require("../../validators/user-validators");
 
 router.post(
@@ -16,5 +16,9 @@ router.post(
   validateBody(schemas.userAuthSchema, "missing fields"),
   ctrl.loginUser
 );
+
+router.post("/logout", authenticate, ctrl.logoutUser);
+
+router.get("/current", authenticate, ctrl.getCurrentUser);
 
 module.exports = router;
