@@ -1,9 +1,8 @@
 const express = require("express");
-
 const router = express.Router();
-const ctrl = require("../../controllers/user-controller");
 
-const { validateBody, authenticate } = require("../../middlewares");
+const ctrl = require("../../controllers/user-controller");
+const { validateBody, authenticate, upload } = require("../../middlewares");
 const { schemas } = require("../../validators/user-validators");
 
 router.post(
@@ -28,5 +27,7 @@ router.patch(
   validateBody(schemas.subscriptionSchema, "missing fields"),
   ctrl.updateSubscription
 );
+
+router.patch("/avatars", authenticate, upload.single("avatar"));
 
 module.exports = router;

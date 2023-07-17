@@ -1,11 +1,15 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+// const path = require("path");
+// const fs = require("fs/promises");
 require("dotenv").config();
 
 const { User } = require("../models/user-model");
 const { ctrlWrapper, HttpError } = require("../helpers");
 
 const { SECRET_KEY } = process.env;
+
+// const avatarDir = path.join(__dirname, "../", "public", "avatars");
 
 const registerUser = async (req, res) => {
   const { email, password } = req.body;
