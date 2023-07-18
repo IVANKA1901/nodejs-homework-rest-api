@@ -8,7 +8,6 @@ require("dotenv").config();
 
 const { User } = require("../models/user-model");
 const { ctrlWrapper, HttpError } = require("../helpers");
-const { log } = require("console");
 
 const { SECRET_KEY } = process.env;
 
