@@ -5,12 +5,10 @@ const path = require("path");
 const jimp = require("jimp");
 const fs = require("fs/promises");
 const { nanoid } = require("nanoid");
-require("dotenv").config();
 
 const { User } = require("../models/user-model");
 const { ctrlWrapper, HttpError, sendEmail } = require("../helpers");
-
-const { SECRET_KEY, BASE_URL } = process.env;
+const { BASE_URL, SECRET_KEY } = require("../configs/envConfig");
 
 const avatarsDir = path.join(__dirname, "../", "public", "avatars");
 
